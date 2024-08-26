@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="index.js"></script>
+    <title>Museo de Arte</title>
+</head>
+<body>
+    <h1>Buscador del Museo</h1>
+    
+    <form action="/search" method="GET">
+        
+        <label for="department">Departameno:</label>
+        <input type="text" name="department" id="department">
+        
+        <label for="keyword">Palabra Clave:</label>
+        <input type="text" name="keyword" id="keyword">
+        
+        <label for="location">localización:</label>
+        <input type="text" name="location" id="location">
+        
+        <button type="submit">Buscar</button>
+        
+    </form>
+    
+</body>
+</html>
