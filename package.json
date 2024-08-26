@@ -5,7 +5,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Gonzalo Noé",
   "license": "ISC",
-  "description": ""
+  "description": "Museo de Arte Metropolitano NY ",
+  "dependencies": {
+    "axios": "1.7.5",
+    "cors": "2.8.5",
+    "express": "4.19.2",
+    "fs": "0.0.1-security",
+    "node-google-translate-skidz": "1.1.2",
+    "path": "0.12.7",
+    "picocolors": "1.0.1"
+  }
 }
