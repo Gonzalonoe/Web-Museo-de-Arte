@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objetos encontrados</title>
+    <style> 
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #eef2f5;
+        margin: 0;
+        padding: 20px;
+        background-image: linear-gradient(to bottom right, #6a11cb, #2575fc);
+    }
+    
+    h1 {
+        font-size: 3em;
+        color: #ffffff;
+        text-align: center;
+        margin-bottom: 40px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        border-bottom: 3px solid #ffffff;
+        display: inline-block;
+        padding-bottom: 12px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        padding: 0 20px;
+    }
+    
+    .card {
+        background-color: #ffffff;
+        border: none;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        min-height: 350px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    
+    .card img {
+        max-width: 100%;
+        max-height: 200px;
+        object-fit: cover;
+        border-bottom: 2px solid #ddd;
+        transition: opacity 0.3s ease;
+    }
+    
+    .card img:hover {
+        opacity: 0.85;
+    }
+    
+    .card-content {
+        padding: 20px;
+        color: #333;
+        font-size: 1.1em;
+    }
+    
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .pagination a {
+        margin: 0 10px;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 10px 15px;
+        background-color: #6a11cb;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+    
+    .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    margin: 0 10px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    background-color: #6a11cb;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.pagination a:hover {
+    background-color: #2575fc;
+}
+    </style>
+</head>
+<body>
+<h1>Museo Metropolitano - Objetos encontrados segun lo buscado</h1>
+
+<div class="grid">
+    <% objects.forEach(object => { %>
+        <div class="card">
+            <% if (object.imageUrl === null || object.imageUrl === "") { %>
+                <p>Imagen no encontrada</p>
+            <% }else {%>
+                <img src="<%= object.imageUrl %>" alt="<%= object.title %>" title="<%= object.date %>">
+                <% }%>
+                <h2><%= object.title %></h2>
+                <p><%= object.culture%></p>
+                <p><%= object.dynasty%></p>
+                <% if (object.additionalImage.length > 0) { %>
+                <a href="/object/<%= object.id %>">ver mas imagenes</a>
+                <% } %>
+        </div>
+    <% }) %>
+</div>
+
+<div class="pagination">
+    <% if (page > 1) { %>
+    <a href="/search?page=<%= page - 1 %>&keyword=<% keyword %>&department=<% department %>&location=<% location %>">Anterior</a>
+    <% } %>
+    <% if (page < totalPages) { %>
+        <a href="/search?page=<%= page + 1 %>&keyword=<% keyword %>&department=<% department %>&location=<% location %>">Siguiente</a>
+        <% } %>
+</div>
+</body>
+</html>

@@ -5,11 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>error</title>
     <style>
-    .error-container {text-align: center;background-color: #fff;padding: 20px;border-radius: 8px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);}
-    h1 { color: #e74c3c;margin-bottom: 10px;}
-    p {font-size: 16px;margin-bottom: 20px;}
-    a {text-decoration: none;color: #3498db;font-weight: bold;padding: 10px 20px;border: 2px solid #3498db;border-radius: 4px;transition: background-color 0.3s, color 0.3s;}
-    a:hover {background-color: #3498db;color: #fff;}
+    body {
+    font-family: 'Arial', sans-serif;
+    background-color: #eef2f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(to bottom right, #6a11cb, #2575fc);
+}
+
+.error-container {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    width: 70%;
+    max-width: 600px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    transform: translateY(0);
+}
+
+.error-container:hover {
+    box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+}
+
+.error-container h1 {
+    color: #e74c3c;
+    margin-bottom: 25px;
+    font-size: 3em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.error-container p {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    color: #333333;
+}
+
+.error-container a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 15px 30px;
+    border: 2px solid #6a11cb;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: #6a11cb;
+}
+
+.error-container a:hover {
+    background-color: #2575fc;
+    border-color: #2575fc;
+    color: #ffffff;
+}
     </style>
 </head>
 <body>
