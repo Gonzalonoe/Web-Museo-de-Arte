@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cartas</title>
+</head>
+<body>
+
+    <h1><%= title %></h1>
+    
+    <img src="<%= imageUrl %>" alt="<%= title %>">
+    <p><strong>Cultura:</strong> <%= culture %></p>
+    <p><strong>Dinastia:</strong> <%= dynasty %></p>
+    <p><strong>Fecha:</strong> <%= date %></p>
+
+    <% if (additionalImage.length > 0) { %>
+    <h2>imagenes extras</h2>
+    <div class="grid">
+        <% additionalImage.forEach(img => { %>
+            <div class="carta">
+                <img src="<%= img %>" alt="imagen extra de <%= title %>">
+            </div>
+    <% }) %>
+    </div>
+    <% } %>
+
+    <a href="/">Volver al inicio</a>
+</body>
+</html>
