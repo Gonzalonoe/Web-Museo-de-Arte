@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>error</title>
     <style>
-    body {
-    font-family: 'Arial', sans-serif;
-    background-color: #eef2f5;
+body {
+    font-family: montserrat;
+    background-color: #f0e4d7; /* Color de fondo madera claro */
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: linear-gradient(to bottom right, #6a11cb, #2575fc);
+    background-image: linear-gradient(to bottom right, #8b5e3c, #6a4f2e); /* Gradiente marrón madera */
 }
 
 .error-container {
@@ -27,6 +27,7 @@
     max-width: 600px;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
     transform: translateY(0);
+    border: 2px solid #5c4033; /* Borde marrón oscuro */
 }
 
 .error-container:hover {
@@ -35,7 +36,7 @@
 }
 
 .error-container h1 {
-    color: #e74c3c;
+    color: #e74c3c; /* Color rojo para el texto de error */
     margin-bottom: 25px;
     font-size: 3em;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
@@ -52,22 +53,22 @@
     color: #ffffff;
     font-weight: bold;
     padding: 15px 30px;
-    border: 2px solid #6a11cb;
+    border: 2px solid #8b5e3c; /* Borde marrón */
     border-radius: 8px;
     transition: background-color 0.3s, color 0.3s;
-    background-color: #6a11cb;
+    background-color: #8b5e3c; /* Fondo marrón */
 }
 
 .error-container a:hover {
-    background-color: #2575fc;
-    border-color: #2575fc;
+    background-color: #6a4f2e; /* Color marrón más oscuro al hacer hover */
+    border-color: #6a4f2e;
     color: #ffffff;
 }
     </style>
 </head>
 <body>
     <div class="error-container">
-        <h1>Error encontrado</h1>
+        <h1>ERROR</h1>
         <p><%= error %></p>
         <a href="/">volver al inicio</a>
     </div>

@@ -35,12 +35,12 @@ async function translateText(text) {
 app.get('/search', async (req, res) => {
     const{ keyword, department, location, page = 1 } = req.query;
     try {
-        let searchUrl = `${MET_API_URL}/search?hasImages=true&q=${keyword || ""}`;
+        let searchUrl = `${MET_API_URL}/search?hasImages=true&q=${keyword || ''}`;
     if(department){
         searchUrl += `&department=${department}`;
     }
     if(location){
-        searchUrl += `&geolocation=${location}`;
+        searchUrl += `&country=${location}`;
     }
     
     const searchResponse = await axios.get(searchUrl);
@@ -50,24 +50,24 @@ app.get('/search', async (req, res) => {
         return res.render('error', { error:'No se encontro objetos'});
     }
 
-    const object = await Promise.all(objectIDs.slice((page - 1) * 20, page * 20).map(async id => {
+    const objects = await Promise.all(objectIDs.slice((page - 1) * 20, page * 20).map(async id => {
     try {
         const objectResponse = await axios.get(`${MET_API_URL}/objects/${id}`);
         const objectData = objectResponse.data;
 
-        const translateTitle = await translateText(objectData.title);
-        const translateCulture = await translateText(objectData.culture);
-        const translateDynasty = await translateText(objectData.dynasty);
+        const translatedTitle = await translateText(objectData.title);
+        const translatedCulture = await translateText(objectData.culture);
+        const translatedDynasty = await translateText(objectData.dynasty);
 
         return{
 
             id: objectData.objectID,
-            title: translateTitle,
-            culture: translateCulture,
-            dynasty: translateDynasty,
+            title: translatedTitle,
+            culture: translatedCulture,
+            dynasty: translatedDynasty,
             imageUrl: objectData.primaryImageSmall,
-            data: objectData.objectData,
-            additionalImage: objectData.additionalImage || []
+            date: objectData.objectDate,
+            additionalImages: objectData.additionalImages || []
 
         };
     }catch (error){
@@ -76,7 +76,7 @@ app.get('/search', async (req, res) => {
     }
     }));
     
-    const filteredObjects = object.filter(obj =>  obj !== null);
+    const filteredObjects = objects.filter(obj =>  obj !== null);
     
     res.render('result', {
         objects: filteredObjects,
@@ -92,24 +92,24 @@ app.get('/search', async (req, res) => {
     }
 });
 
-app.get(`/object/id`, async (req, res) => {
-    const {id} = req.params;
+app.get('/object/:id', async (req, res) => {
+    const { id } = req.params;
     try{
-        const objectResponse = await axios.get(`${MET_API_URL}/object/${id}`);
+        const objectResponse = await axios.get(`${MET_API_URL}/objects/${id}`);
         const objectData = objectResponse.data;
 
-        const translateTitle = await translateText(objectData.title);
-        const translateCulture = await translateText(objectData.culture);
-        const translateDynasty = await translateText(objectData.dynasty);
+        const translatedTitle = await translateText(objectData.title);
+        const translatedCulture = await translateText(objectData.culture);
+        const translatedDynasty = await translateText(objectData.dynasty);
 
         res.render('object', {
             id: objectData.objectID,
-            title: translateTitle,
-            culture: translateCulture,
-            dynasty: translateDynasty,
+            title: translatedTitle,
+            culture: translatedCulture,
+            dynasty: translatedDynasty,
             imageUrl: objectData.primaryImageSmall,
             date: objectData.objectDate,
-            additionalImage: objectData.additionalImage || []
+            additionalImages: objectData.additionalImages || []
         });
     }catch(error){
         console.error(error);

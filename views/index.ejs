@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Museo de Arte</title>
-    <style>
-    body {
-    font-family: 'Arial', sans-serif;
-    background-color: #eef2f5;
+<style>
+body {
+    font-family: montserrat;
     margin: 0;
     padding: 0;
+    background: linear-gradient(to bottom left, #c7b3a2, #47280d);
+    font-family: 'Arial', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: linear-gradient(to bottom right, #6a11cb, #2575fc);
+    color: #5c4033;
 }
 
 h1 {
@@ -22,15 +23,17 @@ h1 {
     font-size: 3em;
     color: #ffffff;
     margin-bottom: 30px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    margin-left: 100px;
+    margin-left: 70px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    border-bottom: 4px solid #b6612d;
+    padding-bottom: 10px;
 }
 
 form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #ffffff;
+    background-color: #f5f0e1;
     padding: 30px;
     border-radius: 12px;
     width: 60%;
@@ -38,6 +41,7 @@ form {
     margin: 0 auto;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
+    border: 7px solid #b16831; 
 }
 
 form:hover {
@@ -46,7 +50,7 @@ form:hover {
 
 form label {
     font-size: 1.3em;
-    color: #333333;
+    color: #5c4033;
     margin-top: 15px;
     margin-bottom: 5px;
     width: 100%;
@@ -57,21 +61,22 @@ form input[type="text"] {
     width: 100%;
     padding: 12px;
     font-size: 1em;
-    border: 1px solid #cccccc;
+    border: 1px solid #b89c7a;
     border-radius: 6px;
     margin-bottom: 20px;
     box-sizing: border-box;
     transition: border-color 0.3s ease;
+    background-color: #ffffff;
 }
 
 form input[type="text"]:focus {
-    border-color: #6a11cb;
+    border-color: #8b5e3c;
     outline: none;
-    box-shadow: 0 0 8px rgba(106, 17, 203, 0.3);
+    box-shadow: 0 0 8px rgba(139, 94, 60, 0.3);
 }
 
 form button {
-    background-color: #6a11cb;
+    background-color: #8b5e3c;
     color: white;
     padding: 14px 25px;
     font-size: 1.2em;
@@ -84,23 +89,23 @@ form button {
 }
 
 form button:hover {
-    background-color: #2575fc;
+    background-color: #7a4f35;
     transform: translateY(-2px);
 }
-    </style>
+</style>
 </head>
 <body>
     <h1>Buscador del Museo Metropolitano NY</h1>
     
     <form action="/search" method="GET">
         
-        <label for="department">Departameno:</label>
+        <label for="department">Departamento:</label>
         <input type="text" name="department" id="department">
         
         <label for="keyword">Palabra Clave:</label>
         <input type="text" name="keyword" id="keyword">
         
-        <label for="location">localización:</label>
+        <label for="location">Localización:</label>
         <input type="text" name="location" id="location">
         
         <button type="submit">Buscar</button>
