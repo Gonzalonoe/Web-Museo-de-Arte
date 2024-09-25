@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Museo de Arte</title>
 <style>
+
 body {
     font-family: montserrat;
     margin: 0;
     padding: 0;
+    background-size: cover;
     background: linear-gradient(to bottom left, #c7b3a2, #47280d);
-    font-family: 'Arial', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    color: #5c4033;
 }
 
 h1 {
@@ -57,7 +57,7 @@ form label {
     text-align: left;
 }
 
-form input[type="text"] {
+form input[type="text"], select {
     width: 100%;
     padding: 12px;
     font-size: 1em;
@@ -69,7 +69,7 @@ form input[type="text"] {
     background-color: #ffffff;
 }
 
-form input[type="text"]:focus {
+form input[type="text"]:focus, select{
     border-color: #8b5e3c;
     outline: none;
     box-shadow: 0 0 8px rgba(139, 94, 60, 0.3);
@@ -92,6 +92,7 @@ form button:hover {
     background-color: #7a4f35;
     transform: translateY(-2px);
 }
+
 </style>
 </head>
 <body>
@@ -99,18 +100,41 @@ form button:hover {
     
     <form action="/search" method="GET">
         
-        <label for="department">Departamento:</label>
-        <input type="text" name="department" id="department">
-        
-        <label for="keyword">Palabra Clave:</label>
-        <input type="text" name="keyword" id="keyword">
-        
-        <label for="location">Localización:</label>
-        <input type="text" name="location" id="location">
+        <label for="departmentId">Departamento:</label>
+        <select name="departmentId" id="department">
+            <option value="">Seleccione busqueda por Departamento</option>
+            <option value="1">Artes Decorativas Americanas</option>
+            <option value="3">Arte del Antiguo Oriente</option>
+            <option value="4">Armas y Armaduras</option>
+            <option value="5">Arte de Afric, Oceania y las Americas</option>
+            <option value="6">Arte Asiatico</option>
+            <option value="7">El Olocausto</option>
+            <option value="8">El instituto de Vestuario</option>
+            <option value="9">Dibujos y Gravados</option>
+            <option value="10">Arte Egipcio</option>
+            <option value="11">Pinturas Europeas</option>
+        </select>
+
+        <label for="geoLocation">Localización:</label>
+        <select name="geoLocation" id="location">
+            <option value="">Seleccione busqueda por Localización</option>
+            <option value="France">Francia</option>
+            <option value="Spain">España</option>
+            <option value="Europe">Europa</option>
+            <option value="Asia">Asia</option>
+            <option value="Greece">Grecia</option>
+            <option value="Canada">Canadá</option>
+            <option value="Africa">África</option>S
+            <option value="China">China</option>S
+            <option value="United States">Estados Unidos</option>
+            <option value="Italy">Italia</option>
+        </select>
+
+        <label for="q">Palabra Clave:</label>
+        <input type="text" name="q" id="keyword" placeholder="Ejemplo: Arms">
         
         <button type="submit">Buscar</button>
         
     </form>
-    
 </body>
 </html>

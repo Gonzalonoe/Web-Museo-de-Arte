@@ -90,7 +90,7 @@ h1 {
     color: #ffffff;
     text-decoration: none;
     font-weight: bold;
-    padding: 10px 20px; /* Ajuste de padding */
+    padding: 10px 20px;
     background-color: #8b5e3c; 
     border-radius: 5px;
     transition: background-color 0.3s ease;
@@ -111,8 +111,9 @@ h1 {
     background-color: #8b5e3c; 
     transition: background-color 0.3s, color 0.3s, transform 0.3s;
     text-align: center;
-    font-size: 1em; /* Tamaño de fuente ajustado */
-    margin-top: 20px;
+    font-size: 1em; 
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .buttom-link:hover {
@@ -133,6 +134,9 @@ h1 {
 </head>
 <body>
 <h1>Museo Metropolitano - Objetos encontrados segun lo buscado</h1>
+<div>
+    <a href="/" class="buttom-link">Volver al inicio</a>
+</div>
 
 <div class="grid">
     <% objects.forEach(object => { %>
@@ -156,10 +160,10 @@ h1 {
 
 <div class="pagination">
     <% if (page > 1) { %>
-    <a href="/search?page=<%= page - 1 %>&keyword=<%= keyword %>&department=<%= department %>&location=<%= location %>">Anterior</a>
+    <a href="/search?page=<%= page - 1 %>&q=<%= q %>&departmentId=<%= departmentId %>&geoLocation=<%= geoLocation %>">Anterior</a>
     <% } %>
     <% if (page < totalPages) { %>
-        <a href="/search?page=<%= page * 1 + 1 %>&keyword=<%= keyword %>&department=<%= department %>&location=<%= location %>">Siguiente</a>
+        <a href="/search?page=<%= page * 1 + 1 %>&q=<%= q %>&departmentId=<%= departmentId %>&geoLocation=<%= geoLocation %>">Siguiente</a>
         <% } %>
 </div>
 </body>

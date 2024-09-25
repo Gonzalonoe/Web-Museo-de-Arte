@@ -33,16 +33,18 @@ async function translateText(text) {
 }
 
 app.get('/search', async (req, res) => {
-    const{ keyword, department, location, page = 1 } = req.query;
+    const{departmentId, geoLocation, q, page = 1 } = req.query;
     try {
-        let searchUrl = `${MET_API_URL}/search?hasImages=true&q=${keyword || ''}`;
-    if(department){
-        searchUrl += `&department=${department}`;
+        let searchUrl = `${MET_API_URL}/search?hasImages=true&departmentId=${departmentId || ''}`;
+    if(geoLocation){
+        searchUrl += `&geoLocation=${geoLocation}`;
     }
-    if(location){
-        searchUrl += `&country=${location}`;
+    if(q){
+        searchUrl += `&q=${q}`;
     }
     
+    
+
     const searchResponse = await axios.get(searchUrl);
     const objectIDs = searchResponse.data.objectIDs;
 
@@ -82,9 +84,9 @@ app.get('/search', async (req, res) => {
         objects: filteredObjects,
         page,
         totalPages: Math.ceil(objectIDs.length/20),
-        keyword,
-        department,
-        location
+        departmentId,
+        geoLocation,
+        q
     });
     }catch (error){
         console.error(error);
@@ -97,7 +99,7 @@ app.get('/object/:id', async (req, res) => {
     try{
         const objectResponse = await axios.get(`${MET_API_URL}/objects/${id}`);
         const objectData = objectResponse.data;
-
+        
         const translatedTitle = await translateText(objectData.title);
         const translatedCulture = await translateText(objectData.culture);
         const translatedDynasty = await translateText(objectData.dynasty);
