@@ -6,11 +6,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
+  "engines": {
+    "node": "20.17"
+  },
   "author": "Gonzalo Noé",
   "license": "ISC",
   "description": "Museo de Arte Metropolitano NY ",
   "dependencies": {
-    "axios": "1.7.5",
+    "axios": "^1.7.7",
     "ejs": "3.1.10",
     "express": "4.19.2",
     "node-google-translate-skidz": "1.1.2",
