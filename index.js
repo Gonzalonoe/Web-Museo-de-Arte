@@ -1,6 +1,7 @@
 const express = require('express');
 const translate = require('node-google-translate-skidz');
 const axios = require('axios');
+const axios = require('./lib/axios.js');
 const path = require('path');
 const app = express();
 const PORT = 5000;
